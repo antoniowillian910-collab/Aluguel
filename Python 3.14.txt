@@ -1,0 +1,37 @@
+Python 3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+... parcelas = int(input("Número de parcelas do contrato (1 a 5): "))
+...
+... while parcelas < 1 or parcelas > 5:
+...     parcelas = int(input("Digite um valor válido entre 1 e 5: "))
+...
+... valor_parcela = valor_contrato / parcelas
+...
+... # RESULTADO
+... print("\n===== ORÇAMENTO =====")
+... print(f"Valor do aluguel mensal: R$ {valor_aluguel:.2f}")
+... print(f"Contrato imobiliário: R$ {valor_contrato:.2f}")
+... print(f"Parcelado em {parcelas}x de R$ {valor_parcela:.2f}")
+...
+... # GERAR CSV
+... gerar = input("\nDeseja gerar arquivo CSV com 12 parcelas? (s/n): ")
+...
+... if gerar.lower() == "s":
+...
+...     with open("orcamento.csv", "w", newline="", encoding="utf-8") as arquivo:
+...         escritor = csv.writer(arquivo)
+...
+...         escritor.writerow(["Parcela", "Valor"])
+...
+...         for i in range(1, 13):
+...             escritor.writerow([i, f"R$ {valor_aluguel:.2f}"])
+...
+...     print("Arquivo 'orcamento.csv' gerado com sucesso!")
+...
+... print("Sistema finalizado.")
+...
+===== IMOBILIÁRIA R.M =====
+1 - Apartamento
+2 - Casa
+3 - Estudio
+Escolha o tipo de imóvel:
