@@ -1,0 +1,33 @@
+Python 3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+...     # 3. Cálculo das Parcelas
+...     print(f"\n--- Resumo do Orçamento ---")
+...     print(f"Valor do Aluguel Mensal: R$ {aluguel_base:.2f}")
+...
+...     parcelas = []
+...     for mes in range(1, 13):
+...         # Taxa de contrato dividida em 5x (R$ 400,00 por mês)
+...         valor_contrato_mes = 400.00 if mes <= 5 else 0.00
+...         total_mes = aluguel_base + valor_contrato_mes
+...
+...         parcelas.append([mes, f"{aluguel_base:.2f}", f"{valor_contrato_mes:.2f}", f"{total_mes:.2f}"])
+...
+...         if mes <= 5:
+...             print(f"Mês {mes}: R$ {total_mes:.2f} (Aluguel + Parcela Contrato)")
+...         else:
+...             print(f"Mês {mes}: R$ {total_mes:.2f} (Apenas Aluguel)")
+...
+...     # 4. Geração do arquivo CSV
+...     nome_arquivo = "orcamento_RM.csv"
+...     with open(nome_arquivo, mode='w', newline='', encoding='utf-8') as file:
+...         writer = csv.writer(file, delimiter=';')
+...         writer.writerow(['Mes', 'Aluguel_Base_RS', 'Parcela_Contrato_RS', 'Total_Mensal_RS'])
+...         writer.writerows(parcelas)
+...
+...     print(f"\nArquivo '{nome_arquivo}' gerado com sucesso!")
+...
+... # Executar o programa
+... if __name__ == "__main__":
+...     gerar_orcamento()
+...
+--- Sistema de Orçamento Imobiliária R.M ---
